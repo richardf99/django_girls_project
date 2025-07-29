@@ -9,6 +9,13 @@
     <div class="content">
         {% block content %}
         {% endblock %}
+        {% if user.is_authenticated %}
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="shiny-btn">Logout</button>
+            </form>
+        {% else %}
+        {% endif %}
     </div>
 </body>
 </html>
